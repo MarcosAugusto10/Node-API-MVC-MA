@@ -26,3 +26,18 @@ exports.CreateUser = async(req, res)=>
     }
 
 }
+
+exports.UpdateUser = async(req, res)=>
+    {
+        const { name,email,age,lastname} = req.body;
+        try
+        {
+            await User.findByIdAndUpdate(req.params.id, { name, email, age });
+            await user.save();
+        }
+        catch(err)
+        {
+            res.status(500).send(err);
+        }
+    
+    }
